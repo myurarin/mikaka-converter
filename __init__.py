@@ -31,20 +31,28 @@ class MikakaConverter:
         try:
             ret_val = ""        # リターン用変数
             if lang_opt is LANG_OPT_JPN:
+                # ひらがなから英語に変換
                 ret_val = self.mkk_en_list[self.mkk_jp_list.index(char_data)]
             elif lang_opt is LANG_OPT_ENG:
+                # 英語からひらがなに変換
                 ret_val = self.mkk_jp_list[self.mkk_en_list.index(char_data)]
             else:
+                # それ以外はNone
                 ret_val = None
             return ret_val
         except ValueError:
+            # 変換できない文字列はNoneとする
             return None
 
     def str_conv(self, str_data, lang_opt):
         # 文字列を変換する
-        pass
+        ret_val = ""
+        for index in range(len(str_data)):
+            ret_val += self.char_conv(str_data[index], lang_opt)
+        return ret_val
 
 
 def main():
     mikaka = MikakaConverter()
-    print(mikaka.char_conv("ろ", LANG_OPT_JPN))
+    str_data = "みかか"
+    print(str_data+" = "+mikaka.str_conv(str_data, LANG_OPT_JPN))
