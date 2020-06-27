@@ -1,8 +1,7 @@
-from __init__ import MikakaConverter
+import os
+import sys
 
-def main():
-    mikaka = MikakaConverter()
-    print(mikaka.mikaka_list)
+import __init__
 
 if __name__ == "__main__":
-    main()
+    __init__.main()

@@ -11,3 +11,7 @@ class MikakaConverter:
     def n_to_m(self, n_str):
         # 英語から平仮名に変換
         pass
+
+def main():
+    mikaka = MikakaConverter()
+    print(mikaka.mikaka_list)
