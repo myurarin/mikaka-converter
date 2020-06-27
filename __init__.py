@@ -1,3 +1,6 @@
+# 定数
+LANG_OPT_JPN = 0        # ひらがな→英語
+LANG_OPT_ENG = 0        # 英語→ひらがな
 
 
 class MikakaConverter:
@@ -23,17 +26,17 @@ class MikakaConverter:
                             "x", "c", "v", "b", "n",
                             "m", ",", ".", "/", "\\"]
 
-    def jp_to_en(self, jp_char):
-        # ひらがなから英語に変換
+    def char_conv(self, char_data, lang_opt):
+        # 文字を変換
         try:
-            return self.mkk_en_list[self.mkk_jp_list.index(jp_char)]
-        except ValueError:
-            return None
-
-    def en_to_jp(self, en_char):
-        # 英語からひらがなに変換
-        try:
-            return self.mkk_jp_list[self.mkk_en_list.index(en_char)]
+            ret_val = ""        # リターン用変数
+            if lang_opt is LANG_OPT_JPN:
+                ret_val = self.mkk_en_list[self.mkk_jp_list.index(char_data)]
+            elif lang_opt is LANG_OPT_ENG:
+                ret_val = self.mkk_jp_list[self.mkk_en_list.index(char_data)]
+            else:
+                ret_val = None
+            return ret_val
         except ValueError:
             return None
 
@@ -44,4 +47,4 @@ class MikakaConverter:
 
 def main():
     mikaka = MikakaConverter()
-    print(mikaka.jp_to_en("ろ"))
+    print(mikaka.char_conv("ろ", LANG_OPT_JPN))
