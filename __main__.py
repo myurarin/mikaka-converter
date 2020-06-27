@@ -1,6 +1,3 @@
-import os
-import sys
-
 import __init__
 
 if __name__ == "__main__":
